@@ -1,0 +1,82 @@
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+.RDataTmp
+
+# User-specific files
+.Ruserdata
+
+# Example code in package build process
+*-Ex.R
+
+# Output files from R CMD build
+/*.tar.gz
+
+# Output files from R CMD check
+/*.Rcheck/
+
+# RStudio files
+.Rproj.user/
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
+
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+# R Environment Variables
+.Renviron
+
+# pkgdown site
+docs/
+
+# translation temp files
+po/*~
+
+# RStudio Connect folder
+rsconnect/
+
+## Folders for analysis results
+.gitignore
+00_scripts/tmp/
+01_data_gwcat/
+02_MetaGWAS/
+03_power_plots/
+04_mh_qq_plots_overview_stats/
+05_locus_definition/
+06_ra_plots/
+07a_cojo_loci/
+07b_cojo_cond_lit/
+07c_sex_conditioning/
+07d_chr11_cojo/
+08_credible_set_analysis/
+09_suggestive_hit_annotation/
+10_eqtl_coloc/
+11_sex_interaction/
+12_MR/
+12_MR_temp/
+
+## include data folders
+!data/02_MetaGWAS/
+!data/08_credible_set_analysis/
+
+## data not free to upload
+additional_information/2004_Bourdeau_EstrogenResponseElements_SupTab1.xlsx
+additional_information/2016_Wilson_AndrogenResponseElements_SupTables.xlsx
+additional_information/2020_Ruth_SexHormones_UKBB/
+additional_information/2023_FinnGen_UKBB_NeuroPhenotypes/
+additional_information/KEGG_SteroidHormoneBiosynthesis/
+00_scripts/00_SourceFile_smelling_meta_functional.R
+00_scripts/00_SourceFile_smelling_meta_functional_angmar.R
