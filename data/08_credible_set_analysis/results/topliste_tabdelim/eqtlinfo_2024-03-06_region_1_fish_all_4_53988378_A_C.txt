@@ -1,0 +1,6 @@
+snps	chr	pos	r2	dist	referenz	eqtn	genesymbol	id_probe	cistrans	tissue	p_or_q_value	statstype	snp_chr_hg19	snp_pos_hg19	gene_chr_hg19	gene_start_hg19	gene_stop_hg19	dist_eQTN_gene	study	FA_study	PMID_study	top_r2_or_p
+4:53488630:C:G	4	54354797	0.316118	6843	ref1: TG phase3 v5	rs12642403	AK023395		cis	liver	0.0000435000744253088	pval	4	54361640					Schadt	Schadt_2008	18462017	r2 & p
+4:53488630:C:G	4	54354797	0.585422	60035	ref1: TG phase3 v5	rs71197022	DANCR		cis	Artery_Aorta	0.0000772795	pval	4	54294762	4	53578571	53586247	708515	GTEx_V8	GTEx Consortium 2020	32913098	r2 & p
+4:53488630:C:G	4	54354797	0.81052	311586	ref1: TG phase3 v5	rs13111251	DANCR		cis	Skin_Not_Sun_Exposed_Suprapubic	0.00012139	pval	4	54043211	4	53578571	53586247	456964	GTEx_V8	GTEx Consortium 2020	32913098	p
+4:53488630:C:G	4	54354797	0.831414	196007	ref1: TG phase3 v5	rs13131136	DANCR		cis	Skin_Not_Sun_Exposed_Suprapubic	0.000168367	pval	4	54158790	4	53578571	53586247	572543	GTEx_V8	GTEx Consortium 2020	32913098	r2
+4:53488630:C:G	4	54354797	0.341613	4636	ref1: TG phase3 v5	rs113035999	DANCR	66038	cis	blood	3.09035e-11	pval	4	54359433	4	53580097	53580098	779335	eQTLgen in prep.	Vossa 2018 in prep.	eQTLgen in prep.	r2 & p

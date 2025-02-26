@@ -1,0 +1,6 @@
+markername	chr	position	snptype	distance	formateddist	genename	description	entrez	ensg	genes_chr	gene_start_bp	gene_end_bp	strand	band	genes_biotype	status_gene	transcripttype	enst	display_term	qq_categ	impact	prio_zuordnung	so_accessID	database	chunk
+4:53488630:C:G	4	54354797	SNV	0	0 kb	FIP1L1	factor interacting with PAPOLA and CPSF1	81608	ENSG00000145216	4	54243810	55161439	1	q12	protein_coding	KNOWN	primary_transcript	ENST00000507166	Intron	intron	MODIFIER	7.2	SO:0001627	dbSNP	4
+4:53488630:C:G	4	54354797	SNV	0	0 kb	LNX1	ligand of numb-protein X 1, E3 ubiquitin protein ligase	84708	ENSG00000072201	4	54325468	54567572	-1	q12	protein_coding	KNOWN	primary_transcript	ENST00000263925	Intron	intron	MODIFIER	7.2	SO:0001627	dbSNP	4
+4:53488630:C:G	4	54354797	SNV	0	0 kb	LNX1	ligand of numb-protein X 1, E3 ubiquitin protein ligase	84708	ENSG00000072201	4	54325468	54567572	-1	q12	protein_coding	KNOWN	primary_transcript	ENST00000306888	Intron	intron	MODIFIER	7.2	SO:0001627	dbSNP	4
+4:53488630:C:G	4	54354797		7769	7.8 kb	LNX1-AS1	LNX1 antisense RNA 1	100873939	ENSG00000250930	4	54362567	54415745	+	q12	antisense	KNOWN									4
+4:53488630:C:G	4	54354797		104325	100 kb	LNX1-AS2	LNX1 antisense RNA 2	100873955	ENSG00000248494	4	54459123	54470214	+	q12	sense_intronic	KNOWN									4

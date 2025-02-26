@@ -1,0 +1,8 @@
+munge_sumstats.py \
+  --sumstats STATS \
+  --snp snpid \
+  --merge-alleles eur_w_ld_chr/w_hm3.snplist \
+  --signed-sumstats beta,0 \
+  --info-min 0.9 \
+  --maf-min 0.01 \
+  --out OUT &
