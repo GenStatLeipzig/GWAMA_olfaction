@@ -27,6 +27,9 @@ if (!dir.exists(directory)) {
   dir.create(directory)
 }
 
+gw_sig = 5e-8
+gw_bonf = gw_sig/13 # Bonferroni adjusted genome-wide significance threshold
+
 # PROCESSING --------------------------------------------------------------
 
 d_or = d_loci[, .(region, rsID, phenotype, nWeightedMAF, pFEM, betaFEM, seFEM, aa, ea)]
@@ -40,7 +43,8 @@ d_or[, lower_ci95_or := exp(beta_harmonized - (1.96 * se_beta))]
 d_or[, upper_ci95_or := exp(beta_harmonized + (1.96 * se_beta))]
 d_or[, lower_ci95_or := round(lower_ci95_or, 2)]
 d_or[, upper_ci95_or := round(upper_ci95_or, 2)]
-
+d_or[pvalue < gw_sig, genome_wide_significance := "trait-wise"]
+d_or[pvalue < gw_bonf, genome_wide_significance := "study-wide"]
 WriteXLS::WriteXLS(
   d_or,
   paste0(p_out, "odds_ratio_publication.xlsx"),

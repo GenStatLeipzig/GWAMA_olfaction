@@ -38,6 +38,7 @@ phenotype_list = list.files(path_data, ".gz")
 phenotype_list = unique(str_match(phenotype_list, "GWASMA_([^_]+)_[^_]+_\\d")[, 2])
 
 p_threshold = 5 * 10^-8 # TODO set threshold (was origninally 5*10^-8, 1e-6 for suggestive)
+gw_bonf = p_threshold/13 # Bonferroni adjusted genome-wide significance threshold
 locus_definition_file = "locus_definition_rsID.csv" # TODO check locus definition file (needs rsID for variants with genome-wide significance)
 
 ##### Common Base Data
@@ -45,6 +46,7 @@ locus = fread(
   paste0(path_locus_definition, locus_definition_file),
   dec = ","
 )
+loci_sig_corrected = locus[pFEM < gw_bonf, region]
 
 
 locus = locus[, c("region", "markerID", "phenotype", "chrom", "pos")]
@@ -349,6 +351,13 @@ ggsave("11_sex_interaction/BetaBeta_sexIA_publication.pdf", width = 3000, height
   # FDR corrected p-values change
   setnames(myPlotData, "gene2", "region", skip_absent = T)
   setkey(myPlotData, region)
+
+myPlotData[, rs_id := rsID]
+myPlotData[, rsID := NULL]
+setnames(myPlotData, "rs_id", "rsID")
+myPlotData[, genome_wide_significance := "trait-wise"]
+myPlotData[region %in% loci_sig_corrected, genome_wide_significance := "study-wide"]
+
   write.table(
     myPlotData,
     "11_sex_interaction/sex_ia.csv",
