@@ -50,7 +50,9 @@ folder_list = c(
   "14_heritability/",
   "15_ldsr_diseases/",
   "16_odds_ratio/",
-  "17_smell_correlation/"
+  "17_smell_correlation/",
+  "18_ldsr_coffee/",
+  "19_ldsr_single_studies/"
 )
 
 

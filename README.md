@@ -108,6 +108,10 @@ Analysis scripts used for further analysis of olfactory meta-GWAS.
 
 - **07b_I2_sensitivity.R**: Sensitivity analysis to investigate the impact of each single study on the heterogeneity of index variants.
 
+- **07c_mrmega_regression.R**: MR-MEGA regression to estimate ancestry-caused heterogeneity for index variants. Note that single study summary statistics will not be provided.
+
+- **07d_mrmega_summary.R**: Lookup of MR-MEGA results for index variants.
+
 ### Heritability
 
 - **08a_ldsc_preparation.R**: Convert summary statistics into the LDSC format and prepare the munge file. The created munge script has to be executed manually before the next step.
@@ -124,8 +128,24 @@ Analysis scripts used for further analysis of olfactory meta-GWAS.
 
 - **09c_format_results.R**: Convert the LDSC output from text format into a data table.
 
+### Genetic correlation between coffee odour identification and intake of coffee and tea
+
+- **09d_ldsc_preparation.R**: Prepare summary statistics of coffee and tea intake for LDSC.
+
+- **09e_create_ldsc_command.R**: Prepare command for LDSC tool. Shell script has to be executed manually.
+
+- **09f_format_results.R**: Convert the LDSC output from text format into a data table.
+
 ### Odds ratio
 - **10_odds_ratio.R**: Calculate odds ratios for the index variants. Effect direction is harmonized so that the risk allele is always referring to a positive effect direction (i.e., better olfactory identification).
+
+### LD score regression for single studies
+
+- **11a_sumstats_preparation.R**: Prepare statistics of participating studies for LDSC. Note files containing single study summary statistics will not be provided.
+
+- **11b_create_ldsr_commands.R**: Prepare command for LDSC tool. Shell script has to be executed manually.
+
+- **11c_collect_heritability.R**: Convert the LDSC output from text format into a data table.
 
 ## 3. Figures
 - **F1_miami_plot.R**: Plot of combined, female and male analysis groups arranged in a Miami plot with annotation of index variants. Annotation data has to be specified manually.
@@ -145,9 +165,9 @@ Analysis scripts used for further analysis of olfactory meta-GWAS.
 
 - **SF3_forest_plots.R**: Forest-plots for index variants are created for all phenotypes where the SNP is genome-wide significant.
 
-- **SF4a_power_calculation.R**: Power calculation depending on stick-wise detection rates. Individual level data for the calculation of case ratios will not be shared publicly. 
+- **SF4a_power_calculation.R**: Power calculation depending on stick-wise detection rates. 
 
-- **SF4b_power_calculation.R**: Power calculation depending on sample size. Individual level data for the calculation of case ratios will not be shared publicly.
+- **SF4b_power_calculation.R**: Power calculation depending on sample size.
 
 - **SF5_smell_correlation.R**: Pearson correlation between pairs of odours. Individual level data will not be shared publicly.
 
