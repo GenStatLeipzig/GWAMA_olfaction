@@ -28,15 +28,15 @@ if (!dir.exists(directory)) {
 }
 
 gw_sig = 5e-8
-gw_bonf = gw_sig/13 # Bonferroni adjusted genome-wide significance threshold
+gw_bonf = gw_sig / 13 # Bonferroni adjusted genome-wide significance threshold
 
 # PROCESSING --------------------------------------------------------------
 
 d_or = d_loci[, .(region, rsID, phenotype, nWeightedMAF, pFEM, betaFEM, seFEM, aa, ea)]
 d_or[, beta_harmonized := ifelse(betaFEM < 0, -betaFEM, betaFEM)]
 d_or[, risk_allel := ifelse(betaFEM < 0, aa, ea)]
-d_or[, or := round(exp(beta_harmonized),2)]
-d_or = d_or[, .(region, rsID, phenotype, nWeightedMAF, risk_allel,pFEM, betaFEM, beta_harmonized,seFEM, or)]
+d_or[, or := round(exp(beta_harmonized), 2)]
+d_or = d_or[, .(region, rsID, phenotype, nWeightedMAF, risk_allel, pFEM, betaFEM, beta_harmonized, seFEM, or)]
 names(d_or) = c("region", "rsID", "phenotype", "nWeightedMAF", "risk_allel", "pvalue", "beta_ori", "beta_harmonized", "se_beta", "OR")
 
 d_or[, lower_ci95_or := exp(beta_harmonized - (1.96 * se_beta))]

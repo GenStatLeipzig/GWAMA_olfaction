@@ -34,7 +34,7 @@ source("helper_scripts/RegAssocPlot_hg38_EnsemblGenes_LIFE_LD.R")
 
 locus_definition_file = "locus_definition_rsID.csv" # TODO check file
 gw_sig = 5e-8
-gw_bonf = gw_sig/13
+gw_bonf = gw_sig / 13
 
 maf_filter = 0.01
 info_filter = 0.8
@@ -146,13 +146,13 @@ done = foreach(l = myRows) %do% {
     path_ldreference = ldreference_fn,
     leadsnp = mySnp.checked
   )
-  
-  if(myPmin < gw_bonf){
-  	sig_level = paste0("; gw. significance: study-wide")
+
+  if (myPmin < gw_bonf) {
+    sig_level = paste0("; gw. significance: study-wide")
   } else if (myPmin < gw_sig) {
-  	sig_level = paste0("; gw. significance: trait-wise")
+    sig_level = paste0("; gw. significance: trait-wise")
   } else {
-  	sig_level = ""
+    sig_level = ""
   }
 
   # plot

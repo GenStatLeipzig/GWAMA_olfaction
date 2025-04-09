@@ -68,8 +68,7 @@ names(phenotype_data) = sapply(pheno_files_list, getPheno)
 message("\n--------------------------\n")
 message("Preparing COJO input files...\n")
 loci_list = c()
-for(row in 1:nrow(regions)){
-  
+for (row in 1:nrow(regions)) {
   phenotypes = regions[row, phenotype]
   region_chrom = regions[row, chrom]
   region = regions[row, region]

@@ -58,12 +58,12 @@ munge_command_file = "18_ldsr_coffee/munge_command.sh"
 # PROCESS GWAMA SUM STATS FILES -------------------------------------------
 
 purrr::walk(c(ld_sum_stats_folder, ld_sum_stats_folder_formatted), ~ if (!dir.exists(.x)) {
-	dir.create(.x, recursive = TRUE)
+  dir.create(.x, recursive = TRUE)
 })
 
 result = foreach(f = file_list, .packages = c("data.table")) %do% {
   data = fread(paste0(path_data, f), nThread = 30)
-	data[, maf := ifelse(freq>0.5, 1-freq, freq)]
+  data[, maf := ifelse(freq > 0.5, 1 - freq, freq)]
 
   # select and change some columns
   data = data[, ..cols_to_keep]

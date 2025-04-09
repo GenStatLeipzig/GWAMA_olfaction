@@ -43,9 +43,9 @@ case_numbers = c(
 d = read_excel(f_case_rate) %>% as.data.table()
 
 d = d[subgroup == "all"]
-d[,correct_total := correct_LIFE + correct_CHRIS + correct_ARIC + correct_RHINELAND]
-d[,incorrect_total := incorrect_LIFE + incorrect_CHRIS + incorrect_ARIC + incorrect_RHINELAND]
-d[,case_rate := incorrect_total/(correct_total + incorrect_total)]
+d[, correct_total := correct_LIFE + correct_CHRIS + correct_ARIC + correct_RHINELAND]
+d[, incorrect_total := incorrect_LIFE + incorrect_CHRIS + incorrect_ARIC + incorrect_RHINELAND]
+d[, case_rate := incorrect_total / (correct_total + incorrect_total)]
 # setorder(d, -case_rate)
 
 case_rates = d[["case_rate"]]

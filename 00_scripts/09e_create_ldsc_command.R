@@ -26,8 +26,8 @@ p_out = paste0(p_analysis, "genetic_correlation/")
 f_out_template = "rg_PHENO_beverage_consumption"
 
 fl_olfaction = c(
-	"GWASMA_coffee_all_2024-03-01.sumstats.gz" # needs to be manualls copied from heritability calculation
-) 
+  "GWASMA_coffee_all_2024-03-01.sumstats.gz" # needs to be manualls copied from heritability calculation
+)
 files_ukbb = list.files(paste0(p_analysis, p_ukbb), pattern = "\\.gz$", full.names = TRUE)
 
 template = "helper_scripts/ldsr_template.txt"
@@ -35,7 +35,7 @@ script = paste0(p_analysis, "ldsr_command.sh")
 
 directory = p_out
 if (!dir.exists(directory)) {
-	dir.create(directory)
+  dir.create(directory)
 }
 
 # CREATE MALE FEMALE COMPARISON -------------------------------------------
@@ -43,20 +43,20 @@ if (!dir.exists(directory)) {
 write("", script)
 
 for (infile in fl_olfaction) {
-	f_olfaction = paste0(p_analysis, infile)
-	
-	files = paste0(c(f_olfaction, files_ukbb), collapse = ",")
-	# files = paste0(f_olfaction, ",", files) # add if correlation with itself is wanted
-	
-	p = str_match(infile, "GWASMA_(.*)_\\d+")[,2]
-	f_out = str_replace(f_out_template, "PHENO", p)
-	
-	ldsr_command = readLines(template)
-	ldsr_command = str_replace_all(ldsr_command, "FILELIST", files)
-	ldsr_command = str_replace_all(ldsr_command, "OUT", paste0(p_out, f_out))
-	
-	write(ldsr_command, script, append = T)
-	write("\n", script, append = T)
+  f_olfaction = paste0(p_analysis, infile)
+
+  files = paste0(c(f_olfaction, files_ukbb), collapse = ",")
+  # files = paste0(f_olfaction, ",", files) # add if correlation with itself is wanted
+
+  p = str_match(infile, "GWASMA_(.*)_\\d+")[, 2]
+  f_out = str_replace(f_out_template, "PHENO", p)
+
+  ldsr_command = readLines(template)
+  ldsr_command = str_replace_all(ldsr_command, "FILELIST", files)
+  ldsr_command = str_replace_all(ldsr_command, "OUT", paste0(p_out, f_out))
+
+  write(ldsr_command, script, append = T)
+  write("\n", script, append = T)
 }
 
 system(paste0("chmod +x ", script))

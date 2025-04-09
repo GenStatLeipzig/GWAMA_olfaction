@@ -265,13 +265,13 @@ plot_combined = ggplot() +
     linetype = "dashed",
     linewidth = 0.3
   ) +
-	geom_hline(
-		yintercept = -log10(5e-8/13),
-		color = "red",
-		linetype = "dotted",
-		linewidth = 0.3
-	) +
-  labs(x = "", y = bquote(atop("OVERALL", '-log'[10] * '(p)'))) +
+  geom_hline(
+    yintercept = -log10(5e-8 / 13),
+    color = "red",
+    linetype = "dotted",
+    linewidth = 0.3
+  ) +
+  labs(x = "", y = bquote(atop("OVERALL", "-log"[10] * "(p)"))) +
   theme_classic() +
   theme(
     legend.position = "none",
@@ -306,8 +306,8 @@ plot_combined = ggplot() +
     data = labels_nosex_known,
     aes(x = rel_pos, y = pval, label = label),
     min.segment.length = 0,
-    nudge_y = c(1,0,1), # nudged region 7 to better show line for adapted threshold (was originally 0)
-    nudge_x = c(-1.9e8,-2e8, 1e8),
+    nudge_y = c(1, 0, 1), # nudged region 7 to better show line for adapted threshold (was originally 0)
+    nudge_x = c(-1.9e8, -2e8, 1e8),
     max.overlaps = Inf,
     size = 3
   ) +
@@ -419,13 +419,13 @@ plot_females = ggplot() +
     linetype = "dashed",
     linewidth = 0.3
   ) +
-	geom_hline(
-		yintercept = -log10(5e-8/13),
-		color = "red",
-		linetype = "dotted",
-		linewidth = 0.3
-	) +
-  labs(x = "", y = bquote(atop("FEMALES",'-log'[10] * '(p)'))) +
+  geom_hline(
+    yintercept = -log10(5e-8 / 13),
+    color = "red",
+    linetype = "dotted",
+    linewidth = 0.3
+  ) +
+  labs(x = "", y = bquote(atop("FEMALES", "-log"[10] * "(p)"))) +
   theme_classic() +
   theme(
     legend.position = "none",
@@ -576,13 +576,13 @@ plot_males = ggplot() +
     linetype = "dashed",
     linewidth = 0.3
   ) +
-	geom_hline(
-		yintercept = -log10(5e-8/13),
-		color = "red",
-		linetype = "dotted",
-		linewidth = 0.3
-	) +
-  labs(x = "", y = bquote(atop("MALES",'-log'[10] * '(p)'))) +
+  geom_hline(
+    yintercept = -log10(5e-8 / 13),
+    color = "red",
+    linetype = "dotted",
+    linewidth = 0.3
+  ) +
+  labs(x = "", y = bquote(atop("MALES", "-log"[10] * "(p)"))) +
   theme_classic() +
   theme(
     legend.position = "none",
@@ -668,7 +668,7 @@ legend = g_legend(dummy_legend_plot)
 # ARRANGE FINAL PLOT ------------------------------------------------------
 
 miami_plot = grid.arrange(plot_females, plot_males, nrow = 2)
-final_plot = grid.arrange(plot_combined, miami_plot, legend, nrow = 3, heights = c(1,1,0.2))
+final_plot = grid.arrange(plot_combined, miami_plot, legend, nrow = 3, heights = c(1, 1, 0.2))
 # ggsave(paste0(path_mh_plots, image_name), final_plot, height = 16, width = 22, units = "cm")
 
 # save as pdf in the requested format

@@ -38,7 +38,7 @@ phenotype_list = list.files(path_data, ".gz")
 phenotype_list = unique(str_match(phenotype_list, "GWASMA_([^_]+)_[^_]+_\\d")[, 2])
 
 p_threshold = 5 * 10^-8 # TODO set threshold (was origninally 5*10^-8, 1e-6 for suggestive)
-gw_bonf = p_threshold/13 # Bonferroni adjusted genome-wide significance threshold
+gw_bonf = p_threshold / 13 # Bonferroni adjusted genome-wide significance threshold
 locus_definition_file = "locus_definition_rsID.csv" # TODO check locus definition file (needs rsID for variants with genome-wide significance)
 
 ##### Common Base Data
@@ -340,23 +340,23 @@ if (p_threshold == 5e-8) {
 
   # print(myPlot1)
 
-# png(filename = paste0('11_sex_interaction/BetaBeta_sexIA_publication.png'),
-#     width = 6000, height = 6000, res=600)
-# print(myPlot1)
-# dev.off()
+  # png(filename = paste0('11_sex_interaction/BetaBeta_sexIA_publication.png'),
+  #     width = 6000, height = 6000, res=600)
+  # print(myPlot1)
+  # dev.off()
 
-ggsave("11_sex_interaction/BetaBeta_sexIA_publication.pdf", width = 3000, height = 3000, units = "px")
+  ggsave("11_sex_interaction/BetaBeta_sexIA_publication.pdf", width = 3000, height = 3000, units = "px")
 
   # save new test data because only the top-phenotype is tested and therefore the
   # FDR corrected p-values change
   setnames(myPlotData, "gene2", "region", skip_absent = T)
   setkey(myPlotData, region)
 
-myPlotData[, rs_id := rsID]
-myPlotData[, rsID := NULL]
-setnames(myPlotData, "rs_id", "rsID")
-myPlotData[, genome_wide_significance := "trait-wise"]
-myPlotData[region %in% loci_sig_corrected, genome_wide_significance := "study-wide"]
+  myPlotData[, rs_id := rsID]
+  myPlotData[, rsID := NULL]
+  setnames(myPlotData, "rs_id", "rsID")
+  myPlotData[, genome_wide_significance := "trait-wise"]
+  myPlotData[region %in% loci_sig_corrected, genome_wide_significance := "study-wide"]
 
   write.table(
     myPlotData,

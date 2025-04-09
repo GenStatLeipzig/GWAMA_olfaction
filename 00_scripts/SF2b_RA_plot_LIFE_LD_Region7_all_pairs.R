@@ -41,7 +41,7 @@ n_studies_filter = 2
 n_large_studies_filter = 1
 
 gw_sig = 5e-8
-gw_bonf = gw_sig/13
+gw_bonf = gw_sig / 13
 
 #####
 # 2. load region specifications from locus definition
@@ -176,12 +176,12 @@ done = foreach(l = myRows) %do% {
   sum(is.na(matched)) # should be 0
   input$myLocus$RSQR = ld[matched, R2]
 
-  if(myPmin < gw_bonf){
-  	sig_level = paste0("; gw. significance: study-wide")
+  if (myPmin < gw_bonf) {
+    sig_level = paste0("; gw. significance: study-wide")
   } else if (myPmin < gw_sig) {
-  	sig_level = paste0("; gw. significance: trait-wise")
+    sig_level = paste0("; gw. significance: trait-wise")
   } else {
-  	sig_level = ""
+    sig_level = ""
   }
 
   # plot

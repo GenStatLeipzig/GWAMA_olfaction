@@ -27,9 +27,9 @@ p_out = paste0(p_analysis, "genetic_correlation/")
 f_out_template = "rg_PHENO_diseases"
 
 fl_olfaction = c(
-	"GWASMA_SCORE_all_2024-03-01.sumstats.gz", # can be copied from heritability analysis
-	"GWASMA_pineapple_female_2024-03-01.sumstats.gz",
-	"GWASMA_coffee_all_2024-03-01.sumstats.gz"
+  "GWASMA_SCORE_all_2024-03-01.sumstats.gz", # can be copied from heritability analysis
+  "GWASMA_pineapple_female_2024-03-01.sumstats.gz",
+  "GWASMA_coffee_all_2024-03-01.sumstats.gz"
 ) # phenotypes with highest heritability + score all
 
 
@@ -47,29 +47,29 @@ if (!dir.exists(directory)) {
 write("", script)
 
 for (infile in fl_olfaction) {
-	f_olfaction = paste0(p_analysis, infile)
-	
-	# select disease files of corresponding sex
-	if(str_detect(infile, "_all_")){
-		files_ukbb <- list.files(paste0(p_analysis, p_ukbb), full.names = TRUE)
-	} else if (str_detect(infile, "_female_")) {
-		files_ukbb <- list.files(paste0(p_analysis, p_ukbb_f), full.names = TRUE)
-	} else if (str_detect(infile, "_male_")) {
-		files_ukbb <- list.files(paste0(p_analysis, p_ukbb_m), full.names = TRUE)
-	}
-	
-files = paste0(c(f_olfaction, files_ukbb), collapse = ",")
-	# files = paste0(f_olfaction, ",", files) # add if correlation with itself is wanted
-	
-	p = str_match(infile, "GWASMA_(.*)_\\d+")[,2]
-	f_out = str_replace(f_out_template, "PHENO", p)
+  f_olfaction = paste0(p_analysis, infile)
 
-ldsr_command = readLines(template)
-ldsr_command = str_replace_all(ldsr_command, "FILELIST", files)
-ldsr_command = str_replace_all(ldsr_command, "OUT", paste0(p_out, f_out))
+  # select disease files of corresponding sex
+  if (str_detect(infile, "_all_")) {
+    files_ukbb = list.files(paste0(p_analysis, p_ukbb), full.names = TRUE)
+  } else if (str_detect(infile, "_female_")) {
+    files_ukbb = list.files(paste0(p_analysis, p_ukbb_f), full.names = TRUE)
+  } else if (str_detect(infile, "_male_")) {
+    files_ukbb = list.files(paste0(p_analysis, p_ukbb_m), full.names = TRUE)
+  }
 
-write(ldsr_command, script, append = T)
-write("\n", script, append = T)
+  files = paste0(c(f_olfaction, files_ukbb), collapse = ",")
+  # files = paste0(f_olfaction, ",", files) # add if correlation with itself is wanted
+
+  p = str_match(infile, "GWASMA_(.*)_\\d+")[, 2]
+  f_out = str_replace(f_out_template, "PHENO", p)
+
+  ldsr_command = readLines(template)
+  ldsr_command = str_replace_all(ldsr_command, "FILELIST", files)
+  ldsr_command = str_replace_all(ldsr_command, "OUT", paste0(p_out, f_out))
+
+  write(ldsr_command, script, append = T)
+  write("\n", script, append = T)
 }
 
 system(paste0("chmod +x ", script))

@@ -18,17 +18,17 @@ source("00_scripts/00_SourceFile_smelling_meta.R")
 setwd(projectpath)
 # VARIABLES ---------------------------------------------------------------
 
-sex <- "male" # all, male, female
+sex = "male" # all, male, female
 
 if (sex == "all") {
   f_selection = "additional_information/ldsc_selected_phenotypes.xlsx"
   p_out = "UKBB_phenotypes/"
 } else if (sex == "female") {
-	f_selection = "additional_information/ldsc_selected_phenotypes_females.xlsx"
-	p_out = "UKBB_phenotypes_females/"
+  f_selection = "additional_information/ldsc_selected_phenotypes_females.xlsx"
+  p_out = "UKBB_phenotypes_females/"
 } else if (sex == "male") {
-	f_selection = "additional_information/ldsc_selected_phenotypes_males.xlsx"
-	p_out = "UKBB_phenotypes_males/"
+  f_selection = "additional_information/ldsc_selected_phenotypes_males.xlsx"
+  p_out = "UKBB_phenotypes_males/"
 }
 
 p_analysis = "15_ldsr_diseases/"

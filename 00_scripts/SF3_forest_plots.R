@@ -30,7 +30,7 @@ locus_definition_file = "locus_definition_rsID.csv" # TODO check locus definitio
 region_data = fread(paste0(path_locus_definition, locus_definition_file), dec = ",")
 
 gw_sig = 5e-8
-gw_bonf = gw_sig/13
+gw_bonf = gw_sig / 13
 
 # DEFINE PROCEDURE --------------------------------------------------------
 
@@ -95,14 +95,14 @@ plot_forest = function(row) {
     header = data.frame(mean = NA, lower = NA, upper = NA, study = "Study", N = "N", is.summary = T)
     plot_data = rbind(header, plot_data)
 
-    if(row_data$pFEM < gw_bonf){
-    	sig_level = paste0(", gw. sig.: study-wide")
+    if (row_data$pFEM < gw_bonf) {
+      sig_level = paste0(", gw. sig.: study-wide")
     } else if (row_data$pFEM < gw_sig) {
-    	sig_level = paste0(", gw. sig.: trait-wise")
+      sig_level = paste0(", gw. sig.: trait-wise")
     } else {
-    	sig_level = ""
+      sig_level = ""
     }
-    
+
     pdf(paste0("07_forest_plots/forest_plots_region_", region_id, "_", phenotype, ".pdf"), width = 7, height = 5)
     plot = forestplot(plot_data,
       labeltext = c(study, N),

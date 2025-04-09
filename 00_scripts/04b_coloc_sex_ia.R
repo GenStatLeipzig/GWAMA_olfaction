@@ -52,7 +52,7 @@ locus = fread(
   ),
   dec = ","
 )
-locus = locus[region != 7] #exclude region 7 as it is not independent
+locus = locus[region != 7] # exclude region 7 as it is not independent
 
 data = data.frame(
   snp = locus$markerID,

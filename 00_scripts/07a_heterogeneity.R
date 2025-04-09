@@ -98,27 +98,31 @@ fwrite(
 plot_data = i2_numbers[row_names == "I2 QC >= 85"]
 select_cols = names(plot_data) %>% str_detect(., "_all")
 plot_data = plot_data[, ..select_cols]
-names(plot_data) = names(plot_data) %>% str_to_lower() %>% str_remove(., "_all")
-plot_data = plot_data * 100 #convert to percent
+names(plot_data) = names(plot_data) %>%
+  str_to_lower() %>%
+  str_remove(., "_all")
+plot_data = plot_data * 100 # convert to percent
 
 # sorting columns
 sorting = as.vector(plot_data) %>% unlist()
 sorting = sort(sorting)
 sorting = names(sorting)
-plot_data = plot_data[,..sorting]
+plot_data = plot_data[, ..sorting]
 
-display_numbers = round(plot_data, 4) %>% paste0(., "%") %>% matrix(., nrow = 1)
+display_numbers = round(plot_data, 4) %>%
+  paste0(., "%") %>%
+  matrix(., nrow = 1)
 pdf(paste0(path_out, "heterogeneity_snp_fraction_publication.pdf"), width = 8, height = 2.3)
 pheatmap(
-			plot_data,
-			color = viridis(10, begin = 0, end = 0.25),
-			cluster_rows = FALSE,
-			cluster_cols = FALSE,
-			display_numbers = display_numbers,
-			show_rownames = FALSE,
-			number_color = "white"
-			# number_format = "%.4%"
-		)
+  plot_data,
+  color = viridis(10, begin = 0, end = 0.25),
+  cluster_rows = FALSE,
+  cluster_cols = FALSE,
+  display_numbers = display_numbers,
+  show_rownames = FALSE,
+  number_color = "white"
+  # number_format = "%.4%"
+)
 dev.off()
 
 # END ---------------------------------------------------------------------
