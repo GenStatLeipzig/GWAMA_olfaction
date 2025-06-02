@@ -64,8 +64,8 @@ ggplot(plot_data, aes(locus, coloc_pp, fill = pp)) +
   scale_y_discrete(expand = c(0, 0)) +
   theme(
     axis.ticks = element_blank(),
-    axis.title.x = element_text(face = "bold", size = 12),
-    axis.title.y = element_text(face = "bold", size = 12),
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12),
     axis.text.x = element_text(color = x_col, size = 11, face = x_face),
     axis.text.y = element_text(color = "black", size = 11)
   )

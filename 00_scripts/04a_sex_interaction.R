@@ -290,9 +290,9 @@ if (p_threshold == 5e-8) {
     scale_colour_manual(values = cols) +
     theme(
       plot.title = element_text(hjust = 0, size = 22, face = "bold"),
-      axis.title.x = element_text(size = 22, face = "bold"),
-      axis.title.y = element_text(size = 22, face = "bold"),
-      axis.text = element_text(size = 20, face = "bold"),
+      axis.title.x = element_text(size = 22),
+      axis.title.y = element_text(size = 22),
+      axis.text = element_text(size = 20),
       strip.text = element_text(size = 20)
     ) +
     labs(
