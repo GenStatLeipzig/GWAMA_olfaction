@@ -121,8 +121,8 @@ for (phenotype in phenotype_list) {
   }
 
   df = data.frame(
-    union_unique, phenotype_df, meta_male_union$beta, meta_male_union$SE, meta_male_union$P,
-    meta_female_union$beta, meta_female_union$SE, meta_female_union$P,
+    union_unique, phenotype_df, meta_male_union$totalN, meta_male_union$beta, meta_male_union$SE, meta_male_union$P,
+    meta_female_union$totalN, meta_female_union$beta, meta_female_union$SE, meta_female_union$P,
     stringsAsFactors = FALSE
   )
 
@@ -131,7 +131,7 @@ for (phenotype in phenotype_list) {
   df$p_diff = rep(NA, nrow(df))
 
   names(df) = c(
-    "SNP", "Trait", "Male_Beta", "Male_SE", "Male_P", "Female_Beta", "Female_SE",
+    "SNP", "Trait", "Male_N","Male_Beta", "Male_SE", "Male_P", "Female_N", "Female_Beta", "Female_SE",
     "Female_P", "mean_diff", "se_diff", "p_diff"
   )
 
@@ -204,6 +204,8 @@ if (p_threshold == 5e-8) {
   myPlotData = data.table(
     rs_id = sexIA$SNP,
     trait = sexIA$Trait,
+    n_male = sexIA$Male_N,
+    n_female = sexIA$Female_N,
     beta_male = sexIA$Male_Beta,
     beta_female = sexIA$Female_Beta,
     se_male = sexIA$Male_SE,
@@ -388,6 +390,8 @@ if (p_threshold != 5e-8) {
   myPlotData = data.table(
     rs_id = sexIA$SNP,
     trait = sexIA$Trait,
+    n_male = sexIA$Male_N,
+    n_female = sexIA$Female_N,
     beta_male = sexIA$Male_Beta,
     beta_female = sexIA$Female_Beta,
     se_male = sexIA$Male_SE,
