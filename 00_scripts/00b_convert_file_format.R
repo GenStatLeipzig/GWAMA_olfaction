@@ -15,7 +15,7 @@
 # INIT --------------------------------------------------------------------
 rm(list = ls())
 time0 = Sys.time()
-source("00_scripts/00_SourceFile_smelling_meta_functional.R")
+source("00_scripts/00_SourceFile_smelling_meta.R")
 setwd(projectpath)
 
 
@@ -28,6 +28,36 @@ max.cores = 13
 prepare_pipeline_format = function(f_gwcat) {
   data = fread(paste0(path_raw_data, f_gwcat), na.strings = c("#NA"), nThread = 1)
 
+  if(!any(str_detect(names(data), "LIFE_EUR"))){
+  	single_study_cols = c(
+  		"beta_LIFE_EUR",
+  		"standard_error_LIFE_EUR",
+  		"p_value_LIFE_EUR",
+  		"n_LIFE_EUR",
+  		"effect_allele_frequency_LIFE_EUR",
+  		"info_LIFE_EUR",
+  		"beta_Rhineland_EUR",
+  		"standard_error_Rhineland_EUR",
+  		"p_value_Rhineland_EUR",
+  		"n_Rhineland_EUR",
+  		"effect_allele_frequency_Rhineland_EUR",
+  		"info_Rhineland_EUR",
+  		"beta_ARIC_EUR",
+  		"standard_error_ARIC_EUR",
+  		"p_value_ARIC_EUR",
+  		"n_ARIC_EUR",
+  		"effect_allele_frequency_ARIC_EUR",
+  		"info_ARIC_EUR",
+  		"beta_CHRIS_EUR",
+  		"standard_error_CHRIS_EUR",
+  		"p_value_CHRIS_EUR",
+  		"n_CHRIS_EUR",
+  		"effect_allele_frequency_CHRIS_EUR",
+  		"info_CHRIS_EUR"
+  	)
+  	data[, (single_study_cols) := NA]
+  }
+  
   setnames(
     data,
     c(
